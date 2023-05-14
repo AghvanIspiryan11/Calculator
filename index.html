@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://kit.fontawesome.com/e22568303d.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-color: aqua;
+            background-size: cover;
+        }
+        table{
+            margin-top: 200px;
+            padding: 30px;
+            border-radius: 5px;
+            background: none;
+        }
+        #input{
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.648);
+            color: rgb(0, 0, 0);
+            width: 228px;
+            border-radius: 5px 5px 0px 0px;
+
+        }
+        #answer{
+            width: 228px;
+            color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            border-radius: 0px 0px 5px 5px;
+        }
+        #clear{
+            outline: none;
+            border: none;
+            color: rgb(255, 255, 255);
+            background-color:#820000 ;
+            padding: 10px;
+            width: 100px;
+            padding-left: 15px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+        #divied{
+            background: white;
+            border: none;
+            font-size: 20px;
+            padding: 10px;
+            width: 60px;
+            padding-left: 15px;
+            color: darkorange;
+            border-radius: 10px;
+        }
+        #times{
+            background-color: white;
+            font-size: 20px;
+            color: black;
+            width: 60px;
+            padding: 10px;
+            padding-left: 15px;
+            border-radius: 10px;
+            border: none;
+        }
+        #number{
+            background-color: white;
+            border: none;
+            outline: none;
+            font-size: 20px;
+            color: black;
+            padding: 20px;
+            padding-left: 20px;
+            border-radius: 15px;
+        }
+        #plus{
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            padding-left: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            width: 50px;
+        }
+        #minus{
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            padding-left: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+            width: 50px;
+        }
+        #barselt{
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            padding-left: 16px;
+            border: none;
+            border-radius: 15px;
+            font-size: 15px;
+            width: 50px;
+        }
+        input{
+            cursor: pointer;
+        }
+        #dot{
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            padding-left: 25px;
+            border: none;
+            border-radius: 15px;
+            font-size: 20px;
+        }
+        #equal{
+            outline: none;
+            border: none;
+            color: rgb(255, 255, 255);
+            background-color:#000000 ;
+            padding: 20px;
+            width: 118px;
+            padding-left: 28px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+        .fa-moon,.fa-sun{
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .fa-sun{
+            color: rgb(255, 255, 255);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="divmoon" align="center" style="position: relative; top: 250px; right:150px ;">
+        <i class="fa-solid fa-moon" onclick="myChanges()"></i>
+        <i class="fa-solid fa-sun" onclick="mySun()"></i>
+    </div>
+    <table align="center">
+        <thead>
+            <th colspan="4">
+                <input type="text" id="input" placeholder="0" readonly />
+                <br/>
+                <input type="text" id="answer" readonly />
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" id="tds">
+                    <input type="button" onclick="myRemove()" value="C" id="clear" class="operator">
+                </td>
+                <td>
+                    <input type="button" onclick="myOprate('/')" value="/" id="divied" class="operator">                 
+                </td>
+                <td>
+                    <input type="button" onclick="myOprate('*')" value="X" id="times" class="operator">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick='getNumber(7)' value="7" id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button"  onclick='getNumber(8)' value="8" id="number" class="operator"> 
+                </td>
+                <td>
+                    <input type="button"  onclick='getNumber(9)' value="9" id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button" onclick="myOprate('+')" value="+" id="plus" class="operator">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button"  onclick='getNumber(4)' value="4" id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button"  onclick='getNumber(5)' value="5" id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button"  onclick='getNumber(6)' value="6"id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button" onclick="myOprate('-')"  value="-" id="minus">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button"  onclick='getNumber(1)'  value="1" id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button"  onclick='getNumber(2)' value="2"id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button"  onclick='getNumber(3)' value="3" id="number" class="operator">
+                </td>
+                <td>
+                    <input type="button" value="( )" id="barselt" class="operator">
+                </td>
+            </tr>
+            <tr>
+                <td >  
+                    <input type="button" onclick="myOprate('.')" value="." id="dot" class="operator">
+                </td>
+                <td>
+                    <input type="button"  onclick='getNumber(0)' value="0" id="number" class="operator">
+                </td>
+                <td colspan="2">
+                    <input type="button" onclick="compasion()" value="=" id="equal" class="operator">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="myScript.js"></script>
+</body>
+</html>
